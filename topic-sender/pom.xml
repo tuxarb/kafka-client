@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>kafka-client-topic-sender</artifactId>
+    <version>0.0.1</version>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>ru.project.tuxarb.kafka</groupId>
+        <artifactId>kafka-client</artifactId>
+        <version>0.0.1</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <name>topic-sender</name>
+    <description>Клиент к Kafka-брокеру для формирования сообщений и последующей их отправке в топик</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>ru.project.tuxarb.kafka</groupId>
+            <artifactId>kafka-client-common-kafka</artifactId>
+            <version>${app.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ru.project.tuxarb.kafka</groupId>
+            <artifactId>kafka-client-common-util</artifactId>
+            <version>${app.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>kafka-client-topic-sender</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.2.1.RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>ru.project.tuxarb.kafka.Application</mainClass>
+                            <layout>ZIP</layout>
+                            <executable>true</executable>
+                            <addResources>true</addResources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
